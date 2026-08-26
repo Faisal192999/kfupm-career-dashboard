@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Evidence-backed comparison of ISE, EE, ME and SWE career paths for top KFUPM graduates in Saudi Arabia.">
+  <title>KFUPM Engineering Career Compass — Saudi Arabia</title>
+  <style>
+    :root {
+      --ink:#0c2031; --muted:#607181; --paper:#f5f7f4; --card:#ffffff;
+      --line:#dce4df; --green:#087f5b; --green2:#19a974; --navy:#12324a;
+      --gold:#d9a441; --blue:#2e6f95; --rust:#c65f3b; --soft:#e9f4ef;
+      --shadow:0 18px 55px rgba(17,48,70,.09); --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:inherit}
+    button,input{font:inherit}
+    .shell{width:min(1180px,calc(100% - 32px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(245,247,244,.91);backdrop-filter:blur(14px);border-bottom:1px solid rgba(220,228,223,.8)}
+    .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em}
+    .mark{width:34px;height:34px;display:grid;place-items:center;color:white;background:var(--green);border-radius:11px;font-size:13px;box-shadow:0 8px 20px rgba(8,127,91,.22)}
+    .navlinks{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:13px;font-weight:650}
+    .navlinks a{text-decoration:none}.navlinks a:hover{color:var(--green)}
+    .print{border:1px solid var(--line);background:white;border-radius:10px;padding:8px 12px;color:var(--ink);cursor:pointer}
+    .hero{padding:76px 0 42px;background:radial-gradient(circle at 85% 10%,rgba(25,169,116,.14),transparent 27%),linear-gradient(180deg,#f9fbf8 0%,var(--paper) 100%)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+    .eyebrow:before{content:"";width:24px;height:2px;background:currentColor}
+    h1{font-size:clamp(42px,7vw,82px);line-height:.98;letter-spacing:-.055em;max-width:900px;margin:18px 0 22px}
+    .hero-copy{display:grid;grid-template-columns:1.35fr .65fr;gap:42px;align-items:end}
+    .lead{font-size:18px;color:#506271;max-width:740px;margin:0}
+    .stamp{justify-self:end;border-left:2px solid var(--green);padding-left:18px;color:var(--muted);font-size:13px}
+    .stamp strong{display:block;color:var(--ink);font-size:14px}
+    .verdict{margin:36px 0 0;background:var(--navy);color:#fff;border-radius:var(--radius);padding:30px;display:grid;grid-template-columns:1.15fr 1fr;gap:28px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+    .verdict:after{content:"";position:absolute;width:260px;height:260px;border:55px solid rgba(255,255,255,.04);border-radius:50%;right:-110px;top:-120px}
+    .verdict-label{color:#93e3c6;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:.14em}
+    .verdict h2{font-size:30px;line-height:1.15;letter-spacing:-.035em;margin:8px 0 12px}
+    .verdict p{margin:0;color:#cbd8df;max-width:570px}
+    .podium{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;align-items:end;z-index:1}
+    .rank{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);border-radius:14px;padding:15px 12px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between}
+    .rank:nth-child(1){min-height:165px;background:rgba(25,169,116,.18)}
+    .rank:nth-child(2){min-height:148px}.rank:nth-child(3){min-height:135px}
+    .rank b{font-size:23px}.rank small{color:#b8c8d0}.rank .score{font-weight:800;color:#93e3c6}
+    section{padding:46px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:22px}
+    .kicker{margin:0 0 6px;color:var(--green);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+    h2.section-title{margin:0;font-size:clamp(27px,4vw,42px);line-height:1.1;letter-spacing:-.04em}
+    .section-note{max-width:470px;color:var(--muted);font-size:13px;margin:0}
+    .signals{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .signal{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 8px 30px rgba(17,48,70,.04)}
+    .signal .num{font-size:31px;line-height:1;font-weight:850;letter-spacing:-.04em;color:var(--green)}
+    .signal b{display:block;margin:10px 0 5px}.signal p{margin:0;color:var(--muted);font-size:12px}
+    .signal a{color:var(--green);text-decoration:none}
+    .workbench{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .controls{padding:24px;position:sticky;top:86px}
+    .controls h3,.chart-panel h3{margin:0 0 5px;font-size:18px;letter-spacing:-.025em}
+    .controls>p,.chart-panel>p{margin:0 0 20px;color:var(--muted);font-size:12px}
+    .presets{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+    .preset{border:1px solid var(--line);background:#f9fbfa;color:var(--muted);padding:7px 10px;border-radius:999px;font-size:11px;font-weight:750;cursor:pointer}
+    .preset.active{color:white;background:var(--green);border-color:var(--green)}
+    .slider{margin:17px 0}.slider-top{display:flex;justify-content:space-between;font-size:12px;font-weight:700}
+    input[type=range]{width:100%;accent-color:var(--green);margin-top:8px}
+    .weight-total{margin-top:20px;padding-top:15px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.weight-total strong{color:var(--ink)}
+    .chart-panel{padding:24px;min-width:0}
+    .rankings{display:grid;gap:12px;margin-top:22px}
+    .rankrow{display:grid;grid-template-columns:30px 58px 1fr 52px;align-items:center;gap:12px;transition:.25s}
+    .ranknum{width:28px;height:28px;display:grid;place-items:center;background:#edf2ef;border-radius:9px;font-weight:800;color:var(--muted)}
+    .major-label{font-weight:850;font-size:16px}
+    .bar{height:12px;background:#edf1ef;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:inherit;transition:width .5s ease}
+    .rankscore{font-weight:850;text-align:right}
+    .legend{display:flex;gap:15px;flex-wrap:wrap;margin-top:24px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+    .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px}
+    .major-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .major-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 10px 35px rgba(17,48,70,.05);position:relative;overflow:hidden}
+    .major-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--major)}
+    .major-top{display:flex;justify-content:space-between;gap:15px;align-items:start}
+    .major-id{display:flex;gap:13px}.major-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--major) 12%,white);color:var(--major);font-weight:900}
+    .major-card h3{font-size:21px;margin:0;letter-spacing:-.03em}.major-card .tagline{color:var(--muted);font-size:12px;margin:2px 0 0}
+    .badge{white-space:nowrap;border:1px solid color-mix(in srgb,var(--major) 28%,white);color:var(--major);background:color-mix(in srgb,var(--major) 8%,white);font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px}
+    .score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0}
+    .mini-score{background:#f7f9f7;border-radius:11px;padding:10px}.mini-score b{display:block;font-size:17px}.mini-score span{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:750}
+    .take{font-size:13px;margin:0 0 15px}
+    .chips{display:flex;flex-wrap:wrap;gap:6px}.chip{font-size:10px;color:#52636f;background:#eef2f0;padding:5px 8px;border-radius:999px}
+    .timeline-wrap{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+    .timeline-label{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+    .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+    .stage{position:relative;padding-top:12px;border-top:3px solid color-mix(in srgb,var(--major) 70%,#dfe6e1)}
+    .stage:before{content:"";position:absolute;top:-6px;left:0;width:9px;height:9px;border-radius:50%;background:var(--major)}
+    .stage b{font-size:10px;line-height:1.25;display:block}.stage span{font-size:9px;color:var(--muted)}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:white;box-shadow:var(--shadow)}
+    table{width:100%;border-collapse:collapse;min-width:920px}
+    th,td{text-align:left;padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:#f6f8f6;position:sticky;top:0}
+    td{font-size:12px}tr:last-child td{border-bottom:0}.td-major{font-weight:850;font-size:14px}.level{display:inline-block;padding:3px 7px;border-radius:6px;background:#edf5f1;color:var(--green);font-weight:800;font-size:10px}
+    .report-grid{display:grid;grid-template-columns:250px 1fr;gap:18px;align-items:start}
+    .tabs{display:grid;gap:8px}.tab{border:1px solid var(--line);background:white;border-radius:13px;padding:13px 15px;text-align:left;font-weight:750;color:var(--muted);cursor:pointer}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+    .report{padding:28px}.report h3{margin:0 0 7px;font-size:27px;letter-spacing:-.035em}.report .subtitle{color:var(--muted);margin:0 0 24px}.report-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px}.report h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green)}.report p,.report li{font-size:13px}.report ul{padding-left:18px;margin:8px 0 20px}.report li{margin-bottom:6px}.watchout{background:#fbf6ea;border:1px solid #ead9b4;border-radius:14px;padding:14px 16px;color:#6c5830}
+    .method{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
+    .method-card{padding:24px}.formula{background:var(--navy);color:white;border-radius:16px;padding:20px;margin-top:15px;font-size:13px}.formula code{color:#9ee8cd;font-weight:800}
+    .sources{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:15px}.source{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:11px;color:var(--muted);background:#fbfcfb}.source:hover{border-color:var(--green);color:var(--green)}.source b{display:block;color:var(--ink);font-size:12px}
+    footer{padding:30px 0 55px;color:var(--muted);font-size:11px;border-top:1px solid var(--line)}
+    .footer-row{display:flex;justify-content:space-between;gap:30px}
+    @media(max-width:900px){.navlinks a{display:none}.hero-copy,.verdict,.workbench,.report-grid,.method{grid-template-columns:1fr}.stamp{justify-self:start}.controls{position:static}.signals{grid-template-columns:repeat(2,1fr)}.report-columns{grid-template-columns:1fr}.tabs{grid-template-columns:repeat(4,1fr)}.tab{text-align:center;padding:10px 6px}.podium{margin-top:8px}}
+    @media(max-width:650px){.shell{width:min(100% - 20px,1180px)}.hero{padding-top:48px}h1{font-size:46px}.major-grid{grid-template-columns:1fr}.signals{grid-template-columns:1fr 1fr}.section-head{display:block}.section-note{margin-top:10px}.score-grid{grid-template-columns:repeat(2,1fr)}.timeline{overflow-x:auto;grid-template-columns:repeat(5,110px);padding-bottom:5px}.podium{grid-template-columns:repeat(2,1fr);align-items:stretch}.rank,.rank:nth-child(n){min-height:105px}.sources{grid-template-columns:1fr}.footer-row{display:block}.rankrow{grid-template-columns:28px 48px 1fr 42px;gap:7px}}
+    @media print{.topbar,.controls,.presets{display:none!important}body{background:white}.shell{width:100%}.hero{padding-top:20px}.workbench,.report-grid,.method{grid-template-columns:1fr}.panel,.major-card,.signal{box-shadow:none;break-inside:avoid}section{padding:25px 0}.report-grid .tabs{display:none}.major-grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <div class="brand"><span class="mark">K</span><span>KFUPM Career Compass</span></div>
+      <nav class="navlinks" aria-label="Page navigation"><a href="#signals">Market</a><a href="#ranker">Ranker</a><a href="#majors">Pathways</a><a href="#report">Report</a><a href="#method">Method</a><button class="print" onclick="window.print()">Print / PDF</button></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="shell">
+        <span class="eyebrow">Saudi engineering careers · 2026 outlook</span>
+        <h1>Four degrees.<br>Four different kinds of leverage.</h1>
+        <div class="hero-copy">
+          <p class="lead">A decision-grade comparison of Industrial & Systems, Electrical, Mechanical, and Software Engineering for a high-performing KFUPM graduate—grounded in Saudi sector evidence and transparent analyst modeling.</p>
+          <div class="stamp"><strong>Base case: equal weights</strong>25% each across velocity, demand, flexibility, and quality of life.<br>Evidence reviewed through 26 Aug 2026.</div>
+        </div>
+        <div class="verdict">
+          <div><span class="verdict-label">Executive verdict</span><h2>SWE wins the base case.<br>ISE wins the widest option set.</h2><p>Choose SWE for the fastest scalable upside; ISE for consulting, operations, analytics, and leadership mobility; EE for a durable technical moat in electrification and automation; ME for asset-intensive engineering depth and long-horizon operational leadership.</p></div>
+          <div class="podium" id="heroPodium"></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="signals">
+      <div class="shell">
+        <div class="section-head"><div><p class="kicker">Market signals</p><h2 class="section-title">The Saudi demand engine</h2></div><p class="section-note">These are sector indicators, not major-specific job counts. They establish the opportunity landscape used in the demand scores.</p></div>
+        <div class="signals">
+          <article class="signal"><div class="num">SAR 495B</div><b>Digital economy</b><p>About 15% of GDP; the ICT market exceeded SAR 180B in 2024. <a href="https://mcit.gov.sa/en/news/saudi-arabia%E2%80%99s-digital-economy-new-era-tech-growth-innovation-and-global-impact-empowered-hrh" target="_blank" rel="noopener">MCIT ↗</a></p></article>
+          <article class="signal"><div class="num">+47%</div><b>Projected tech-job growth</b><p>Modeled KSA tech-job growth to 2030 versus 11.6% for the total workforce. <a href="https://assets.swoogo.com/uploads/5801105-68c883c80349f.pdf" target="_blank" rel="noopener">Workforce forecast ↗</a></p></article>
+          <article class="signal"><div class="num">2.433M</div><b>NIDLP employment</b><p>Industry, mining, energy and logistics employment in 2024; 508K jobs added during the year. <a href="https://www.spa.gov.sa/en/N2363341" target="_blank" rel="noopener">SPA / NIDLP ↗</a></p></article>
+          <article class="signal"><div class="num">20 GW</div><b>Renewables launched</b><p>Renewable projects launched by end-2024, including 3.6 GW reaching commercial operation. <a href="https://www.vision2030.gov.sa/media/uvknp4di/nidlp_annual_report-2024_-en.pdf" target="_blank" rel="noopener">NIDLP report ↗</a></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ranker">
+      <div class="shell">
+        <div class="section-head"><div><p class="kicker">Interactive decision model</p><h2 class="section-title">Change what “best” means</h2></div><p class="section-note">Scores are comparative analyst estimates on a 0–10 scale. Select a goal or set your own priorities; rankings recalculate instantly.</p></div>
+        <div class="workbench">
+          <aside class="panel controls">
+            <h3>Your priorities</h3><p>Weights normalize automatically to 100%.</p>
+            <div class="presets" id="presets"></div>
+            <div id="sliders"></div>
+            <div class="weight-total"><span>Normalized total</span><strong id="weightTotal">100%</strong></div>
+          </aside>
+          <div class="panel chart-panel"><h3 id="scenarioTitle">Balanced career value</h3><p id="scenarioCopy">Best all-round path for a top KFUPM graduate in the current Saudi market.</p><div class="rankings" id="rankings"></div><div class="legend" id="legend"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="majors">
+      <div class="shell">
+        <div class="section-head"><div><p class="kicker">Career architecture</p><h2 class="section-title">How each degree compounds</h2></div><p class="section-note">Timelines show common title bands visible on professional profiles. Employer structures vary; faster jumps normally require exceptional delivery or switching firms.</p></div>
+        <div class="major-grid" id="majorGrid"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head"><div><p class="kicker">Pillar-by-pillar</p><h2 class="section-title">Comparison matrix</h2></div><p class="section-note">The sharpest differences are not employability—they are work setting, title portability, and how quickly technical work converts into organizational authority.</p></div>
+        <div class="table-wrap"><table><thead><tr><th>Major</th><th>Promotion velocity</th><th>Saudi demand</th><th>Sector pivot range</th><th>Remote / hybrid</th><th>Pay ceiling</th><th>Stress pattern</th><th>Primary risk</th></tr></thead><tbody id="matrixBody"></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="report">
+      <div class="shell">
+        <div class="section-head"><div><p class="kicker">Detailed analytical report</p><h2 class="section-title">The strategic readout</h2></div><p class="section-note">Use the four tabs to review the opportunity, progression logic, lifestyle, and risk profile behind each score.</p></div>
+        <div class="report-grid"><div class="tabs" id="tabs"></div><article class="panel report" id="reportBody"></article></div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="shell">
+        <div class="section-head"><div><p class="kicker">Method & evidence</p><h2 class="section-title">What is measured—and what is modeled</h2></div></div>
+        <div class="method">
+          <article class="panel method-card"><h3>Scoring method</h3><p>Each major receives four pillar scores. The dashboard multiplies each score by your normalized priority weight, then sums the results.</p><div class="formula"><code>Overall = Σ (pillar score × normalized weight)</code></div><p><b>Evidence:</b> official Saudi sector size, jobs, investment, career-family maps, KFUPM curriculum breadth, and recognized workforce/salary research.</p><p><b>Model:</b> promotion timing, relative lifestyle, title portability, and the final 0–10 scores. No claim is made that LinkedIn provided a longitudinal KFUPM alumni dataset.</p><p><b>Compensation:</b> assessed as relative growth and ceiling, not precise fresh-graduate salary. Packages vary materially by employer tier, location, allowances, performance, and role scarcity.</p></article>
+          <article class="panel method-card"><h3>Core sources</h3><p>Primary Saudi sources are prioritized. Secondary workforce and compensation studies are used only where official major-level data do not exist.</p><div class="sources">
+            <a class="source" target="_blank" rel="noopener" href="https://mcit.gov.sa/en/news/saudi-arabia%E2%80%99s-digital-economy-new-era-tech-growth-innovation-and-global-impact-empowered-hrh"><b>MCIT · Digital economy milestones</b>SAR 495B economy, SAR 180B+ ICT market, 381K tech jobs.</a>
+            <a class="source" target="_blank" rel="noopener" href="https://www.hrsd.gov.sa/sites/default/files/2025-02/Digital%20Sector%20Skills%20Intro%20Report_EN.pdf"><b>HRSD · Digital Sector Skills Framework</b>Official software job families, skills, and pathway maps.</a>
+            <a class="source" target="_blank" rel="noopener" href="https://www.hrsd.gov.sa/sites/default/files/2025-02/Energy%20and%20Utilities%20Sector%20Skills%20Intro%20Report_EN.pdf"><b>HRSD · Energy & Utilities Skills Framework</b>Electrical, mechanical, operations, renewables, and leadership roles.</a>
+            <a class="source" target="_blank" rel="noopener" href="https://www.vision2030.gov.sa/media/uvknp4di/nidlp_annual_report-2024_-en.pdf"><b>Vision 2030 · NIDLP Annual Report 2024</b>Industry, logistics, mining, jobs, factories, and renewables.</a>
+            <a class="source" target="_blank" rel="noopener" href="https://assets.swoogo.com/uploads/5801105-68c883c80349f.pdf"><b>Workforce Skills Forecast · KSA</b>2030 workforce and tech-role projections.</a>
+            <a class="source" target="_blank" rel="noopener" href="https://teleworks.sa/en/about-us/"><b>HRSD-supported Telework Program</b>Formal basis for flexible and virtual work in Saudi Arabia.</a>
+            <a class="source" target="_blank" rel="noopener" href="https://ise.kfupm.edu.sa/programs/undergraduate-program/bs-in-industrial-systems-engineering/"><b>KFUPM · ISE curriculum</b>Optimization, analytics, quality, production, and systems scope.</a>
+            <a class="source" target="_blank" rel="noopener" href="https://theprofessionals.sa/salary-guide-2025/"><b>The Professionals · KSA Salary Guide 2025</b>Local compensation research methodology and market context.</a>
+          </div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-row"><span>Prepared as a career strategy model for high-performing KFUPM graduates.</span><span>Decision aid—not a guarantee of hiring, promotion, or compensation.</span></div></footer>
+
+  <script>
+    const pillars={velocity:'Career velocity',demand:'Demand & growth',flexibility:'Sector flexibility',qol:'Quality of life'};
+    const majors={
+      SWE:{name:'Software Engineering',short:'SWE',color:'#087f5b',tag:'Fastest scalable upside',scores:{velocity:9.3,demand:9.5,flexibility:9.4,qol:8.4},take:'The strongest base-case choice when the graduate genuinely enjoys building software and will keep learning. High title velocity, global skill portability, and the best remote/hybrid potential offset rapid skill churn and uneven startup pacing.',sectors:['Product tech','Fintech','GovTech','AI & data','Energy tech','Consulting'],timeline:[['Graduate / Junior SWE','0–2y'],['Software Engineer','2–5y'],['Senior SWE','5–8y'],['Staff / Tech Lead','7–11y'],['Eng. Manager / Head','9–14y']],matrix:['Fast','Very high','Very high','High','Very high','Release cycles; on-call','AI-enabled competition & skill churn'],report:{
+        subtitle:'The highest-upside generalist technical path—if coding is a real fit, not merely a salary choice.',
+        velocity:['Titles are comparatively standardized and portable: Junior/Graduate → Software Engineer → Senior → Staff/Lead or Engineering Manager → Head/Director.','Demonstrable output makes performance more legible than in many traditional engineering functions. Switching firms can accelerate title and pay growth, though title inflation in small companies must be discounted.','The official HRSD framework maps 16 software-family roles, including developer, engineer, DevOps, architect, engineering manager, and head of software engineering.'],
+        demand:['MCIT reports a SAR 495B digital economy, a SAR 180B+ ICT market in 2024, and more than 381K technology jobs.','A KSA workforce forecast projects tech jobs growing 47% by 2030, versus 11.6% for the total workforce.','Demand extends beyond tech companies into banks, government, telecom, retail, logistics, energy, healthcare, and digital subsidiaries.'],
+        life:['Best remote/hybrid compatibility of the four; Saudi Arabia has a formal HRSD-supported telework program.','Very strong compensation ceiling in product, cloud, cybersecurity, AI/data, architecture, and technical management.','Stress is uneven: mature enterprise teams can be balanced; startups, incident response, and deadline-driven launches can be intense.'],
+        risk:'The degree is not a shortcut. Weak portfolios face global competition; tools change rapidly; and AI raises the productivity bar. The moat is systems design, domain knowledge, product judgment, security, and the ability to ship—not syntax alone.'}},
+      ISE:{name:'Industrial & Systems Engineering',short:'ISE',color:'#2e6f95',tag:'Best strategic optionality',scores:{velocity:8.6,demand:8.7,flexibility:9.6,qol:8.1},take:'The broadest bridge from engineering into operations, supply chain, analytics, consulting, PMO, and transformation. It can reach management quickly, but early-career positioning must be deliberate because employers use many different titles.',sectors:['Operations','Supply chain','Consulting','PMO','Analytics','Manufacturing'],timeline:[['Analyst / ISE','0–2y'],['Process / Ops Engineer','2–5y'],['Senior / Consultant','5–8y'],['Lead / Project Mgr','7–11y'],['Manager / Director','10–15y']],matrix:['Fast–medium','High','Best-in-class','Medium–high','High','Project/client peaks','Role ambiguity; shallow specialization'],report:{
+        subtitle:'The degree with the widest menu of credible pivots and the shortest bridge to business leadership.',
+        velocity:['Typical profiles do not follow one label: Industrial Engineer, Operations Analyst, Process Engineer, Supply Chain Analyst, Business Analyst, Consultant, PMO Analyst, then Senior/Lead/Project Manager/Operations Manager.','Progress accelerates when quantitative work is paired with ownership of cost, service level, throughput, inventory, or transformation outcomes.','Management conversion can be faster than in asset engineering because ISE work naturally crosses functions and exposes the graduate to decisions.'],
+        demand:['NIDLP sectors employed 2.433M people in 2024 and added more than 508K jobs; manufacturing, logistics, energy, and mining all create systems and operations demand.','The same toolkit applies to service operations, healthcare, aviation, government transformation, banking operations, and consulting.','KFUPM’s program combines operations research, optimization, statistics, quality, production, simulation, facilities, reliability, maintenance, and business foundations.'],
+        life:['Office-based analytics and PMO roles can be hybrid; plant, warehouse, and continuous-improvement roles are more site-bound.','Compensation rises strongly when the graduate moves from analyst to consultant, program manager, operations leader, product operations, or strategy/transformation.','Stress is usually deadline- and stakeholder-driven rather than on-call; consulting and turnaround roles are the exceptions.'],
+        risk:'Breadth can become vagueness. A top ISE graduate should choose a spike—analytics/optimization, supply chain, consulting, product ops, quality, or project delivery—and build tool depth in SQL/Python/BI, ERP, simulation, or Lean Six Sigma.'}},
+      EE:{name:'Electrical Engineering',short:'EE',color:'#d9a441',tag:'Strongest Saudi technical moat',scores:{velocity:7.9,demand:9.0,flexibility:8.1,qol:6.9},take:'A durable, regulated technical path aligned with power, renewables, controls, telecom, electronics, automation, and data centers. The ceiling is excellent, but authority often requires longer experience and site/commissioning exposure.',sectors:['Power & grid','Renewables','Controls','Telecom','Data centers','Automation'],timeline:[['Graduate Engineer','0–2y'],['Electrical / Control Eng.','2–5y'],['Senior Engineer','5–9y'],['Lead / Principal','8–12y'],['Manager / Dept. Head','11–16y']],matrix:['Medium','Very high','High','Low–medium','High–very high','Commissioning; outages; safety','Specialization lock-in; project cycles'],report:{
+        subtitle:'The best fit for a graduate who wants hard technical scarcity tied to Saudi electrification and automation.',
+        velocity:['The common hierarchy is Graduate Engineer → discipline engineer → Senior → Lead/Principal → Engineering or Operations Manager → Department Head.','The HRSD energy framework explicitly maps electrical engineer/supervisor, lead engineer, transmission and distribution, power generation, renewables, controls, maintenance, project manager, and general manager roles.','Promotion is credential- and experience-sensitive; commissioning, protection, reliability, and safe operational ownership carry more weight than title alone.'],
+        demand:['Saudi momentum spans grid expansion, renewable generation, storage, industrial automation, telecom, data centers, rail, defense, and smart infrastructure.','The NIDLP report records 20 GW of renewable projects launched by end-2024. The official energy framework covers power, renewables and nuclear, oil and gas, hydrogen, carbon, and utilities.','Electrical skills also bridge toward embedded systems, control software, IoT, cybersecurity for operational technology, and technical consulting.'],
+        life:['Design and consulting roles may offer some hybrid flexibility; plant, field, protection, testing, and commissioning roles are mainly site-based.','Compensation can become premium in protection, high voltage, I&C, grid integration, data centers, and project leadership.','Safety-critical responsibility, outages, travel, and commissioning windows can create high-intensity periods.'],
+        risk:'The major is broad but jobs are specialized. Choose a durable lane early—power/protection, control and automation, electronics/embedded, telecom, or renewables—and avoid becoming a generic coordinator without deep technical ownership.'}},
+      ME:{name:'Mechanical Engineering',short:'ME',color:'#c65f3b',tag:'Deep asset-economy relevance',scores:{velocity:7.4,demand:8.4,flexibility:7.5,qol:6.3},take:'A resilient Saudi core-industry degree with strong demand in rotating equipment, reliability, HVAC, manufacturing, EPC, and energy. It offers tangible operational responsibility but the least geographic and remote flexibility.',sectors:['Oil & gas','EPC','Manufacturing','HVAC','Reliability','Utilities'],timeline:[['Graduate Engineer','0–2y'],['Mechanical / Reliability','2–6y'],['Senior Engineer','6–10y'],['Lead / Superintendent','9–13y'],['Manager / Dept. Head','12–17y']],matrix:['Medium–slow','High','Medium–high','Low','High','Turnarounds; field/site pressure','Site dependency; slower title velocity'],report:{
+        subtitle:'The strongest choice for someone energized by physical systems, industrial assets, and operational accountability.',
+        velocity:['Common transitions are Graduate Mechanical Engineer → Mechanical/Equipment/Maintenance Engineer → Senior → Lead/Principal or Superintendent → Maintenance/Engineering Manager → Department Head.','Asset knowledge compounds over long cycles, so promotions can be slower but become defensible; reliability, shutdown, and project-delivery records matter heavily.','The HRSD energy framework links mechanical engineer/supervisor and lead engineer roles to facility operations, maintenance, equipment commissioning, production, and management paths.'],
+        demand:['Saudi demand is anchored in oil and gas, petrochemicals, utilities, EPC, industrial manufacturing, mining, HVAC, transport, and large facilities.','NIDLP reported 12,589 industrial establishments in 2024, while manufacturing grew 4%; the same program covers major energy and logistics investment.','Growth niches include reliability analytics, robotics, advanced manufacturing, energy efficiency, hydrogen systems, and large-scale cooling.'],
+        life:['Most high-value roles require physical proximity to assets. Design-office roles can be hybrid occasionally, but full remote is uncommon.','Compensation becomes strong in owner-operators, scarce equipment specialties, major EPC work, reliability leadership, and plant management.','Shutdowns, rotations, field heat, safety exposure, travel, and emergency maintenance can reduce predictability.'],
+        risk:'Routine drafting and generic coordination offer limited differentiation. Build a specialty—rotating equipment, reliability, HVAC/MEP, manufacturing automation, thermal systems, or project engineering—and document measurable asset outcomes.'}}
+    };
+
+    const presets={
+      balanced:{label:'Balanced',title:'Balanced career value',copy:'Best all-round path for a top KFUPM graduate in the current Saudi market.',w:{velocity:25,demand:25,flexibility:25,qol:25}},
+      upside:{label:'Fast upside',title:'Fastest upside & title velocity',copy:'Prioritizes promotion speed, compensation trajectory, and flexible opportunity.',w:{velocity:40,demand:25,flexibility:20,qol:15}},
+      core:{label:'Demand first',title:'Highest market-demand confidence',copy:'Puts current Saudi demand and Vision 2030 growth alignment ahead of other factors.',w:{velocity:10,demand:55,flexibility:20,qol:15}},
+      lifestyle:{label:'Lifestyle',title:'Flexibility & quality of life',copy:'Prioritizes work setting, geographic freedom, and career portability.',w:{velocity:10,demand:15,flexibility:35,qol:40}},
+      leadership:{label:'Leadership',title:'Management & consulting pathway',copy:'Prioritizes cross-functional mobility and conversion into organizational authority.',w:{velocity:35,demand:15,flexibility:40,qol:10}}
+    };
+    let weights={...presets.balanced.w},activePreset='balanced',activeReport='SWE';
+    const fmt=n=>n.toFixed(1);
+    function weighted(m){const total=Object.values(weights).reduce((a,b)=>a+b,0)||1;return Object.entries(pillars).reduce((sum,[k])=>sum+m.scores[k]*(weights[k]/total),0)}
+    function ordered(){return Object.values(majors).map(m=>({...m,total:weighted(m)})).sort((a,b)=>b.total-a.total)}
+    function renderPodium(){document.querySelector('#heroPodium').innerHTML=ordered().map((m,i)=>`<div class="rank"><small>#${i+1}</small><b>${m.short}</b><span class="score">${fmt(m.total)}/10</span></div>`).join('')}
+    function renderPresets(){document.querySelector('#presets').innerHTML=Object.entries(presets).map(([k,p])=>`<button class="preset ${k===activePreset?'active':''}" data-preset="${k}">${p.label}</button>`).join('');document.querySelectorAll('.preset').forEach(b=>b.onclick=()=>{activePreset=b.dataset.preset;weights={...presets[activePreset].w};renderAllControls()})}
+    function renderSliders(){document.querySelector('#sliders').innerHTML=Object.entries(pillars).map(([k,label])=>`<div class="slider"><div class="slider-top"><label for="${k}">${label}</label><span id="${k}Val">${weights[k]}</span></div><input id="${k}" data-key="${k}" type="range" min="0" max="60" value="${weights[k]}" aria-label="${label} weight"></div>`).join('');document.querySelectorAll('input[type=range]').forEach(el=>el.oninput=e=>{activePreset='custom';weights[e.target.dataset.key]=+e.target.value;renderPresets();renderRankings()})}
+    function renderRankings(){const total=Object.values(weights).reduce((a,b)=>a+b,0);document.querySelector('#weightTotal').textContent=total?`${Math.round(Object.values(weights).reduce((a,b)=>a+b/total*100,0))}%`:'Set a weight';const p=presets[activePreset];document.querySelector('#scenarioTitle').textContent=p?p.title:'Custom priority mix';document.querySelector('#scenarioCopy').textContent=p?p.copy:'A personalized ranking based on your selected pillar weights.';document.querySelector('#rankings').innerHTML=ordered().map((m,i)=>`<div class="rankrow"><span class="ranknum">${i+1}</span><span class="major-label">${m.short}</span><div class="bar"><div class="fill" style="width:${m.total*10}%;background:${m.color}"></div></div><span class="rankscore">${fmt(m.total)}</span></div>`).join('');document.querySelector('#legend').innerHTML=Object.values(majors).map(m=>`<span><i class="dot" style="background:${m.color}"></i>${m.short}: ${m.tag}</span>`).join('');renderPodium()}
+    function renderAllControls(){renderPresets();renderSliders();renderRankings()}
+    function renderMajors(){document.querySelector('#majorGrid').innerHTML=Object.values(majors).map(m=>`<article class="major-card" style="--major:${m.color}"><div class="major-top"><div class="major-id"><div class="major-icon">${m.short}</div><div><h3>${m.name}</h3><p class="tagline">${m.tag}</p></div></div><span class="badge">Base ${fmt(Object.values(m.scores).reduce((a,b)=>a+b,0)/4)}</span></div><div class="score-grid">${Object.entries(pillars).map(([k,label])=>`<div class="mini-score"><b>${fmt(m.scores[k])}</b><span>${label}</span></div>`).join('')}</div><p class="take">${m.take}</p><div class="chips">${m.sectors.map(s=>`<span class="chip">${s}</span>`).join('')}</div><div class="timeline-wrap"><div class="timeline-label">Typical title progression</div><div class="timeline">${m.timeline.map(([t,y])=>`<div class="stage"><b>${t}</b><span>${y}</span></div>`).join('')}</div></div></article>`).join('')}
+    function renderMatrix(){document.querySelector('#matrixBody').innerHTML=Object.values(majors).map(m=>`<tr><td class="td-major" style="color:${m.color}">${m.short}</td>${m.matrix.map((x,i)=>`<td>${i<5?`<span class="level">${x}</span>`:x}</td>`).join('')}</tr>`).join('')}
+    function renderTabs(){document.querySelector('#tabs').innerHTML=Object.values(majors).map(m=>`<button class="tab ${m.short===activeReport?'active':''}" data-major="${m.short}">${m.short}</button>`).join('');document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{activeReport=b.dataset.major;renderTabs();renderReport()})}
+    function renderReport(){const m=majors[activeReport],r=m.report;document.querySelector('#reportBody').innerHTML=`<h3 style="color:${m.color}">${m.name}</h3><p class="subtitle">${r.subtitle}</p><div class="report-columns"><div><h4>Career velocity & hierarchy</h4><ul>${r.velocity.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Demand & Vision 2030 alignment</h4><ul>${r.demand.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h4>Quality of life & compensation</h4><ul>${r.life.map(x=>`<li>${x}</li>`).join('')}</ul><div class="watchout"><b>Strategic risk</b><br>${r.risk}</div></div></div>`}
+    renderAllControls();renderMajors();renderMatrix();renderTabs();renderReport();
+  </script>
+</body>
+</html>
